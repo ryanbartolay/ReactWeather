@@ -58,7 +58,7 @@
 	var Main = __webpack_require__(216);
 	var About = __webpack_require__(218);
 	var Weather = __webpack_require__(219);
-	var Examples = __webpack_require__(220);
+	var Examples = __webpack_require__(222);
 
 	// This is saying that, if path is only / it will render IndexRoute
 	// whilst if path is /about it will render the mapped Route component
@@ -24951,15 +24951,23 @@
 	"use strict";
 
 	var React = __webpack_require__(1);
+	var WeatherForm = __webpack_require__(220);
+	var WeatherMessage = __webpack_require__(221);
 
 	var Weather = React.createClass({
 	    displayName: "Weather",
 
 	    render: function render() {
 	        return React.createElement(
-	            "h3",
+	            "div",
 	            null,
-	            "Weather Component"
+	            React.createElement(
+	                "h3",
+	                null,
+	                "Weather Component"
+	            ),
+	            React.createElement(WeatherForm, null),
+	            React.createElement(WeatherMessage, null)
 	        );
 	    }
 	});
@@ -24968,6 +24976,59 @@
 
 /***/ },
 /* 220 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var WeatherForm = React.createClass({
+	    displayName: "WeatherForm",
+
+	    render: function render() {
+	        return React.createElement(
+	            "div",
+	            null,
+	            React.createElement(
+	                "form",
+	                null,
+	                React.createElement("input", { type: "text" }),
+	                React.createElement(
+	                    "button",
+	                    null,
+	                    "Get Weather"
+	                )
+	            )
+	        );
+	    }
+	});
+
+	module.exports = WeatherForm;
+
+/***/ },
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var WeatherMessage = React.createClass({
+	    displayName: "WeatherMessage",
+
+	    render: function render() {
+	        return React.createElement(
+	            "h2",
+	            null,
+	            "It is 40 in Makati"
+	        );
+	    }
+	});
+
+	module.exports = WeatherMessage;
+
+/***/ },
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
