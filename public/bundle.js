@@ -24960,25 +24960,47 @@
 
 	    getInitialState: function getInitialState() {
 	        return {
-	            location: "Manila",
-	            temp: 34
+	            isLoading: false
 	        };
 	    },
 	    handleSearch: function handleSearch(location) {
 	        var that = this;
+
+	        this.setState({
+	            isLoading: true
+	        });
+
 	        openWeather.getTemp(location).then(function (res) {
 	            that.setState({
+	                isLoading: false,
 	                location: location,
 	                temp: res
 	            });
 	        }, function (res) {
 	            alert(res);
+	            this.setState({
+	                isLoading: false
+	            });
 	        });
 	    },
 	    render: function render() {
 	        var _state = this.state,
+	            isLoading = _state.isLoading,
 	            location = _state.location,
 	            temp = _state.temp;
+
+
+	        function renderMessage() {
+	            if (isLoading) {
+	                return React.createElement(
+	                    "h3",
+	                    null,
+	                    "Fetching Weather..."
+	                );
+	            } else if (temp && location) {
+	                return React.createElement(WeatherMessage, { location: location, temp: temp });
+	            }
+	        }
 
 	        return React.createElement(
 	            "div",
@@ -24989,7 +25011,7 @@
 	                "Weather Component"
 	            ),
 	            React.createElement(WeatherForm, { onSearch: this.handleSearch }),
-	            React.createElement(WeatherMessage, { location: location, temp: temp })
+	            renderMessage()
 	        );
 	    }
 	});
@@ -25080,6 +25102,8 @@
 	    getTemp: function getTemp(location) {
 	        var encodedLocation = encodeURIComponent(location);
 	        var requestURI = OPEN_WEATHER_MAP_URL + "&q=" + location;
+
+	        console.log(requestURI);
 
 	        return axios.get(requestURI).then(function (res) {
 	            if (res.data.cod && res.data.message) {
