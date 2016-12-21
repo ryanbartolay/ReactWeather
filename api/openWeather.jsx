@@ -8,8 +8,9 @@ module.exports = {
         var requestURI = `${OPEN_WEATHER_MAP_URL}&q=${location}`;
 
         console.log(requestURI);
-
+        
         return axios.get(requestURI).then(function (res) {
+            //debugger;
             if (res.data.cod && res.data.message) {
                 throw new Error("success axios but error", res.data.message);
             } else {
