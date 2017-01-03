@@ -6,6 +6,10 @@ var About = require("About");
 var Weather = require("Weather");
 var Examples = require("Examples");
 
+// Load Foundation
+require("style!css!foundation-sites/dist/foundation.min.css");
+$(document).foundation();
+
 // This is saying that, if path is only / it will render IndexRoute
 // whilst if path is /about it will render the mapped Route component
 ReactDOM.render(
