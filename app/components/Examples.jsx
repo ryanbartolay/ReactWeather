@@ -6,10 +6,10 @@ var Examples = () => {
         <div>
             <h1 className="text-center">Examples</h1>
             <p>Here are some locations to try out!</p>
-            <ul>
+            <ol>
                 <li><Link to="/?location=Philadelphia">Philadelphia</Link></li>
                 <li><Link to="/?location=Rio">Rio, Brazil</Link></li>
-            </ul>
+            </ol>
         </div>
     );
 };
