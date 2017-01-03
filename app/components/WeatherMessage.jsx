@@ -2,7 +2,7 @@ var React = require("react");
 
 var WeatherMessage = ({location, temp}) => {
     return (
-        <h2>It is {temp} in {location}</h2>
+        <h3 className="text-center">It is {temp} in {location}</h3>
     );
 };
 module.exports = WeatherMessage;
